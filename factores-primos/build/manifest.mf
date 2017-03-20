@@ -1,2 +1,0 @@
-Manifest-version: 1.0
-Main-Class:  src.packagename2.packagename3.ClassNameProgram

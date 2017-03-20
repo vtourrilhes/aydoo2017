@@ -1,9 +1,8 @@
 package ar.edu.untref.aydoo;
 
-public class Program 
-{
-    public static final void main(String arg[])
-    {
+public class Program{
+    public static final void main(String arg[]){
+
         int numero = Integer.parseInt(arg[0]);	
 	System.out.print("Factores primos de "+numero+": ");	
 
