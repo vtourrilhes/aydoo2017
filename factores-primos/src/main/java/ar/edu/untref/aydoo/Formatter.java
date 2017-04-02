@@ -21,7 +21,7 @@ public class Formatter {
                 break;
             case "quiet":
                 System.out.println();
-                for(int i=0;i<array.length;i++){
+                for(int i=array.length-1;i>=0;i--){
                     builder.append("\n"+array[i]);
                 }
                 break;
@@ -33,6 +33,11 @@ public class Formatter {
     }
 
     private String parseFormat(String format) {
+
+        //si el formato está vacio, devuelvo pretty
+        if(format.equals("--format=")) return "pretty";
+
+        format.toLowerCase(); // lo transformo todoo a minuscula
         return format.substring(9);
     }
 }
