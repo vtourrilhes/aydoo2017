@@ -2,11 +2,11 @@ package ar.edu.untref.aydoo;
 
 import java.util.*;
 
-public class Votacion {
+public class JuntaElectoral {
 
     private List<Voto> votos;
 
-    public Votacion(){
+    public JuntaElectoral(){
         this.votos = new LinkedList<Voto>();
     }
 
