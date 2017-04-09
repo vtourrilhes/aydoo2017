@@ -7,7 +7,7 @@ public class JuntaElectoral {
     private List<Voto> votos;
 
     public JuntaElectoral(){
-        this.votos = new LinkedList<Voto>();
+        this.votos = new LinkedList<>();
     }
 
     public void votar(Voto voto) {
@@ -19,15 +19,15 @@ public class JuntaElectoral {
         Candidato ganador = null;
         Integer cantidadVotos = -1;
 
-        Map<Candidato,Integer> votoPorCandidato = this.getTablaResultados();
+        Map<Candidato,Integer> votoPorCandidato = this.getTablaVotosPorCandidato();
 
         Iterator it = votoPorCandidato.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry e = (Map.Entry)it.next();
+            Map.Entry par = (Map.Entry)it.next();
 
-            if((Integer)e.getValue()>cantidadVotos.intValue()){
-                cantidadVotos = (Integer) e.getValue();
-                ganador = (Candidato) e.getKey();
+            if((Integer)par.getValue()>cantidadVotos.intValue()){
+                cantidadVotos = (Integer) par.getValue();
+                ganador = (Candidato) par.getKey();
             }
 
         }
@@ -40,15 +40,15 @@ public class JuntaElectoral {
         Partido ganador = null;
         Integer cantidadVotos = -1;
 
-        Map<Partido,Integer> votoPorCandidato = this.getTablaResultadosPorProvincia(provincia);
+        Map<Partido,Integer> votoPorPartido = this.getTablaResultadosPorProvincia(provincia);
 
-        Iterator it = votoPorCandidato.entrySet().iterator();
+        Iterator it = votoPorPartido.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry e = (Map.Entry)it.next();
+            Map.Entry par = (Map.Entry)it.next();
 
-            if((Integer)e.getValue()>cantidadVotos.intValue()){
-                cantidadVotos = (Integer) e.getValue();
-                ganador = (Partido) e.getKey();
+            if((Integer)par.getValue()>cantidadVotos.intValue()){
+                cantidadVotos = (Integer) par.getValue();
+                ganador = (Partido) par.getKey();
             }
 
         }
@@ -61,18 +61,18 @@ public class JuntaElectoral {
     }
 
     /**
-     * devuelve un hashmap con <Candidato,cantidadVotos>
+     * @return devuelve un hashmap con <Candidato,cantidadVotos>
      * */
-    private HashMap<Candidato,Integer> getTablaResultados(){
+    private HashMap<Candidato,Integer> getTablaVotosPorCandidato(){
 
         HashMap<Candidato,Integer> votoPorCandidato = new HashMap<>();
 
         for (Voto voto: this.votos) {
-            if(!votoPorCandidato.containsKey(voto.getFormula().getCandidato())){
-                votoPorCandidato.put(voto.getFormula().getCandidato(),1);
+            if(!votoPorCandidato.containsKey(voto.getCandidato())){
+                votoPorCandidato.put(voto.getCandidato(),1);
             }else{
-                int votosActuales = votoPorCandidato.get(voto.getFormula().getCandidato()) + 1;
-                votoPorCandidato.put(voto.getFormula().getCandidato(),votosActuales);
+                int votosActuales = votoPorCandidato.get(voto.getCandidato()) + 1;
+                votoPorCandidato.put(voto.getCandidato(),votosActuales);
             }
         }
 
@@ -80,7 +80,7 @@ public class JuntaElectoral {
     }
 
     /**
-     * devuelve un hashmap con <Partido,cantidadVotos> filtrando por el parametro provincia
+     * @return  devuelve un hashmap con <Partido,cantidadVotos> filtrando por el parametro provincia
      * */
     private HashMap<Partido,Integer> getTablaResultadosPorProvincia(Provincia provincia){
 
@@ -88,13 +88,13 @@ public class JuntaElectoral {
 
         for (Voto voto: this.votos) {
 
-            if(voto.getProvincia().getNombre().equals(provincia.getNombre())){
+            if(voto.getProvincia().equals(provincia)){
 
-                if(!votoPorPartido.containsKey(voto.getFormula().getPartido())){
-                    votoPorPartido.put(voto.getFormula().getPartido(),1);
+                if(!votoPorPartido.containsKey(voto.getCandidato().getPartido())){
+                    votoPorPartido.put(voto.getCandidato().getPartido(),1);
                 }else{
-                    int votosActuales = votoPorPartido.get(voto.getFormula().getPartido()) + 1;
-                    votoPorPartido.put(voto.getFormula().getPartido(),votosActuales);
+                    int votosActuales = votoPorPartido.get(voto.getCandidato().getPartido()) + 1;
+                    votoPorPartido.put(voto.getCandidato().getPartido(),votosActuales);
                 }
             }
 

@@ -10,11 +10,9 @@ public class IntegracionTest {
 
         JuntaElectoral juntaElectoral = new JuntaElectoral();
         Partido fpv = new Partido("Frente para la Victoria");
-        Candidato scioli = new Candidato("Scioli");
-        Formula formula = new Formula(fpv,scioli);
-        fpv.agregarFormula(formula);
+        Candidato scioli = new Candidato("Scioli",fpv);
         Provincia salta = new Provincia("Salta");
-        Voto voto = new Voto(formula,salta);
+        Voto voto = new Voto(scioli,salta);
 
         juntaElectoral.votar(voto);
 
@@ -28,20 +26,18 @@ public class IntegracionTest {
         JuntaElectoral juntaElectoral = new JuntaElectoral();
         Partido fpv = new Partido("Frente para la Victoria");
         Partido cambiemos = new Partido("Cambiemos");
-        Candidato scioli = new Candidato("Scioli");
-        Candidato macri = new Candidato("Macri");
-        Formula formula = new Formula(fpv,scioli);
-        Formula formula2 = new Formula(cambiemos,macri);
-        fpv.agregarFormula(formula);
-        cambiemos.agregarFormula(formula2);
+        Candidato scioli = new Candidato("Scioli",fpv);
+        Candidato macri = new Candidato("Macri",cambiemos);
+        fpv.agregarCandidato(scioli);
+        cambiemos.agregarCandidato(macri);
         Provincia salta = new Provincia("Salta");
-        Voto voto = new Voto(formula,salta);
-        Voto voto3 = new Voto(formula,salta);
-        Voto voto4 = new Voto(formula,salta);
-        Voto voto5 = new Voto(formula,salta);
-        Voto voto6 = new Voto(formula,salta);
-        Voto voto1 = new Voto(formula2,salta);
-        Voto voto2 = new Voto(formula2,salta);
+        Voto voto = new Voto(scioli,salta);
+        Voto voto3 = new Voto(scioli,salta);
+        Voto voto4 = new Voto(scioli,salta);
+        Voto voto5 = new Voto(scioli,salta);
+        Voto voto6 = new Voto(scioli,salta);
+        Voto voto1 = new Voto(macri,salta);
+        Voto voto2 = new Voto(macri,salta);
         juntaElectoral.votar(voto);
         juntaElectoral.votar(voto1);
         juntaElectoral.votar(voto2);
@@ -50,7 +46,7 @@ public class IntegracionTest {
         juntaElectoral.votar(voto5);
         juntaElectoral.votar(voto6);
 
-        Assert.assertEquals(scioli.getNombre(), juntaElectoral.calcularCandidatoGanadorNacional().getNombre());
+        Assert.assertEquals(scioli, juntaElectoral.calcularCandidatoGanadorNacional());
 
     }
 
@@ -59,11 +55,10 @@ public class IntegracionTest {
 
         JuntaElectoral juntaElectoral = new JuntaElectoral();
         Partido fpv = new Partido("Frente para la Victoria");
-        Candidato scioli = new Candidato("Scioli");
-        Formula formula = new Formula(fpv,scioli);
-        fpv.agregarFormula(formula);
+        Candidato scioli = new Candidato("Scioli",fpv);
+        fpv.agregarCandidato(scioli);
         Provincia salta = new Provincia("Salta");
-        Voto voto = new Voto(formula,salta);
+        Voto voto = new Voto(scioli,salta);
 
         juntaElectoral.votar(voto);
 
@@ -77,22 +72,20 @@ public class IntegracionTest {
         JuntaElectoral juntaElectoral = new JuntaElectoral();
         Partido fpv = new Partido("Frente para la Victoria");
         Partido cambiemos = new Partido("Cambiemos");
-        Candidato scioli = new Candidato("Scioli");
-        Candidato macri = new Candidato("Macri");
-        Formula formula = new Formula(fpv,scioli);
-        Formula formula2 = new Formula(cambiemos,macri);
-        fpv.agregarFormula(formula);
-        cambiemos.agregarFormula(formula2);
+        Candidato scioli = new Candidato("Scioli",fpv);
+        Candidato macri = new Candidato("Macri",cambiemos);
+        fpv.agregarCandidato(scioli);
+        cambiemos.agregarCandidato(macri);
         Provincia salta = new Provincia("Salta");
         Provincia jujuy = new Provincia("Jujuy");
         Provincia tucuman=new Provincia("tucuman");
-        Voto voto = new Voto(formula,jujuy);
-        Voto voto1 = new Voto(formula2,jujuy);
-        Voto voto2 = new Voto(formula2,tucuman);
-        Voto voto3 = new Voto(formula2,jujuy);
-        Voto voto4 = new Voto(formula2,jujuy);
-        Voto voto5 = new Voto(formula2,salta);
-        Voto voto6 = new Voto(formula,salta);
+        Voto voto = new Voto(scioli,jujuy);
+        Voto voto1 = new Voto(macri,jujuy);
+        Voto voto2 = new Voto(macri,tucuman);
+        Voto voto3 = new Voto(macri,jujuy);
+        Voto voto4 = new Voto(macri,jujuy);
+        Voto voto5 = new Voto(macri,salta);
+        Voto voto6 = new Voto(scioli,salta);
         juntaElectoral.votar(voto);
         juntaElectoral.votar(voto1);
         juntaElectoral.votar(voto2);
@@ -110,11 +103,10 @@ public class IntegracionTest {
 
         JuntaElectoral juntaElectoral = new JuntaElectoral();
         Partido fpv = new Partido("Frente para la Victoria");
-        Candidato scioli = new Candidato("Scioli");
-        Formula formula = new Formula(fpv,scioli);
-        fpv.agregarFormula(formula);
+        Candidato scioli = new Candidato("Scioli",fpv);
+        fpv.agregarCandidato(scioli);
         Provincia salta = new Provincia("Salta");
-        Voto voto = new Voto(formula,salta);
+        Voto voto = new Voto(scioli,salta);
 
         juntaElectoral.votar(voto);
 
