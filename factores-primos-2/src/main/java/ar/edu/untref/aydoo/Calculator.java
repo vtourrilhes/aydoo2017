@@ -7,13 +7,10 @@ public class Calculator {
 
     public Integer[] calculatePrimeNumbers(int recieviedNumber) {
 
-
         if(recieviedNumber==1) return new Integer[]{1};
-
         List<Integer> numbersList = new ArrayList<>();
 
         while(recieviedNumber!=1){
-
             int answer = getLeastPrimeFactor(recieviedNumber);
             numbersList.add(answer);
             recieviedNumber = recieviedNumber/answer;
@@ -23,9 +20,6 @@ public class Calculator {
         arrayAnswer = numbersList.toArray(arrayAnswer);
         return arrayAnswer;
     }
-
-
-
 
     public static int getLeastPrimeFactor(int number){
 
