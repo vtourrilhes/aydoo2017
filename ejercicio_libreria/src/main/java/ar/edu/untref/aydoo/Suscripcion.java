@@ -1,6 +1,15 @@
 package ar.edu.untref.aydoo;
 
-public enum Suscripcion{
-    //TODO hacer lo mismo que hice en periodicidad
-    SIN_SUSCRIPCION,DIARIO,SEMANAL,QUINCENAL,MENSUAL,ANUAL
+public class Suscripcion {
+
+    private TipoSuscripcion modificadorPorSuscripcion;
+
+    public Suscripcion(TipoSuscripcion tipoSuscripcion){
+        this.modificadorPorSuscripcion= tipoSuscripcion;
+    }
+
+    public double getPrecio() {
+        return  this.modificadorPorSuscripcion.getValor();
+    }
+
 }

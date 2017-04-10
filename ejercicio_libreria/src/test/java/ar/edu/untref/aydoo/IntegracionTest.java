@@ -16,9 +16,9 @@ public class IntegracionTest {
         ArticuloLibreria lapicera = new ArticuloLibreria("Lapicera",5);
 
         Compra compra = new Compra(juan,Meses.AGOSTO);
-        compra.addArticulo(elHobbit,1,null);
-        compra.addArticulo(elGrafico,1,Suscripcion.SIN_SUSCRIPCION);
-        compra.addArticulo(lapicera,2,null);
+        compra.addArticulo(elHobbit,1);
+        compra.addArticulo(elGrafico,1);
+        compra.addArticulo(lapicera,2);
         libreria.comprar(compra);
 
         double resultado = libreria.calcularMontoACobrar(Meses.AGOSTO,juan);
@@ -33,18 +33,74 @@ public class IntegracionTest {
 
         Libreria libreria = new Libreria();
         Cliente maria = new Cliente("Maria");
-        Revista barcelona = new Revista("Barcelona",20,Periodicidad.QUINCENAL);
-        ArticuloLibreria lapicera = new ArticuloLibreria("Lapicera",5);
-        Diario pagina12 = new Diario("Pagina 12",12);
+        Suscripcion suscripcionBarcelona = new Suscripcion(TipoSuscripcion.ANUAL);
+        Revista barcelona = new Revista("Barcelona",20,suscripcionBarcelona,Periodicidad.QUINCENAL);
+        Diario pagina12 = new Diario("Pagina 12",12,Periodicidad.DIARIO);
 
         Compra compra = new Compra(maria,Meses.ENERO);
-        compra.addArticulo(barcelona,1,Suscripcion.ANUAL);
-        compra.addArticulo(pagina12,1,null);
+        compra.addArticulo(barcelona,1);
+        compra.addArticulo(pagina12,1);
         libreria.comprar(compra);
 
         double resultado = libreria.calcularMontoACobrar(Meses.ENERO,maria);
 
         Assert.assertEquals(44,resultado,.5);
+
+    }
+
+    @Test
+    public void testCompraIgnorarMesesQueNoSePiden(){
+
+        Libreria libreria = new Libreria();
+        Cliente maria = new Cliente("Maria");
+        Suscripcion suscripcionBarcelona = new Suscripcion(TipoSuscripcion.ANUAL);
+        Revista barcelona = new Revista("Barcelona",20,suscripcionBarcelona,Periodicidad.QUINCENAL);
+        Diario pagina12 = new Diario("Pagina 12",12,Periodicidad.DIARIO);
+        Compra compra = new Compra(maria,Meses.ENERO);
+        Compra compra2 = new Compra(maria,Meses.ENERO);
+        Compra compra3 = new Compra(maria,Meses.MARZO);
+        compra.addArticulo(barcelona,1);
+        compra.addArticulo(pagina12,1);
+        compra2.addArticulo(barcelona,1);
+        compra2.addArticulo(pagina12,1);
+        compra3.addArticulo(barcelona,1);
+        compra3.addArticulo(pagina12,1);
+
+
+        libreria.comprar(compra);
+        libreria.comprar(compra2);
+        libreria.comprar(compra3);
+        double resultado = libreria.calcularMontoACobrar(Meses.ENERO,maria);
+
+        Assert.assertEquals(44*2,resultado,.5);
+
+    }
+
+    @Test
+    public void testCompraVaciaEnMesEspecificado(){
+
+        Libreria libreria = new Libreria();
+        Cliente maria = new Cliente("Maria");
+        Suscripcion suscripcionBarcelona = new Suscripcion(TipoSuscripcion.ANUAL);
+        Revista barcelona = new Revista("Barcelona",20,suscripcionBarcelona,Periodicidad.QUINCENAL);
+        Diario pagina12 = new Diario("Pagina 12",12,Periodicidad.DIARIO);
+        Compra compra = new Compra(maria,Meses.ENERO);
+        Compra compra2 = new Compra(maria,Meses.ENERO);
+        Compra compra3 = new Compra(maria,Meses.MARZO);
+        compra.addArticulo(barcelona,1);
+        compra.addArticulo(pagina12,1);
+        compra2.addArticulo(barcelona,1);
+        compra2.addArticulo(pagina12,1);
+        compra3.addArticulo(barcelona,1);
+        compra3.addArticulo(pagina12,1);
+
+
+        libreria.comprar(compra);
+        libreria.comprar(compra2);
+        libreria.comprar(compra3);
+        double resultado = libreria.calcularMontoACobrar(Meses.JULIO,maria);
+
+        Assert.assertEquals(0,resultado,.5);
 
     }
 

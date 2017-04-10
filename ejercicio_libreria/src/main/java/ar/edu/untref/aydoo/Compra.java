@@ -3,9 +3,6 @@ package ar.edu.untref.aydoo;
 import java.util.LinkedList;
 import java.util.List;
 
-import static ar.edu.untref.aydoo.Periodicidad.DIARIO;
-import static ar.edu.untref.aydoo.Periodicidad.SEMANAL;
-
 public class Compra {
 
     private List<Producto> articulos;
@@ -31,54 +28,9 @@ public class Compra {
         return monto;
     }
 
-    //Trata articulos sin periodicidad
-    public void addArticulo(Producto nuevoArticulo,int cantidad,Suscripcion suscripcion){
+    public void addArticulo(Producto nuevoArticulo,int cantidad){
 
-        double modificadorPrecioSuscripcion = 1;
-
-        if(suscripcion != null){
-
-            switch (suscripcion){
-                case SIN_SUSCRIPCION:
-                    modificadorPrecioSuscripcion = 1;
-                    break;
-                case DIARIO:
-                    //TODO
-                    break;
-                case SEMANAL:
-                    //TODO
-                    break;
-                case QUINCENAL:
-                    //TODO
-                    break;
-                case MENSUAL:
-                    //TODO
-                    break;
-                case ANUAL:
-                    modificadorPrecioSuscripcion = .8;
-                    break;
-                default:
-                    //TODO
-            }
-
-        }
-
-        if(nuevoArticulo instanceof Libro){
-
-            this.monto = this.monto +nuevoArticulo.getPrecio() * cantidad;
-
-        }else if(nuevoArticulo instanceof ArticuloLibreria) {
-
-            double iva = (nuevoArticulo.getPrecio()*cantidad)*0.21;
-            this.monto = this.monto + (nuevoArticulo.getPrecio()*cantidad) + iva;
-
-        }else if(nuevoArticulo instanceof Revista){
-            this.monto = this.monto + (nuevoArticulo.getPrecio() * modificadorPrecioSuscripcion * cantidad * nuevoArticulo.getPeriodicidad().getValor());
-
-        }else if(nuevoArticulo instanceof Diario){
-            this.monto = this.monto + (nuevoArticulo.getPrecio() * modificadorPrecioSuscripcion * cantidad);
-        }
-
+        this.monto = this.monto + nuevoArticulo.getPrecio() * cantidad;
     }
 
 }

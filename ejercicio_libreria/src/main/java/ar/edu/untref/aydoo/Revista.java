@@ -2,12 +2,35 @@ package ar.edu.untref.aydoo;
 
 public class Revista extends Producto{
 
-    public Revista(String nombre,double precio, Periodicidad periodicidad) {
-        super(nombre,precio,periodicidad);
+    private Suscripcion suscripcion;
+    private boolean tieneSuscripcion;
+    private Periodicidad periodicidad;
+
+    public Revista(String nombre,double precio, Suscripcion suscripcion,Periodicidad periodicidad) {
+
+        super(nombre,precio);
+        this.tieneSuscripcion = true;
+        this.suscripcion= suscripcion;
+        this.periodicidad = periodicidad;
     }
 
-    public void setPeriodicidad(Periodicidad periodicidad){
-        super.periodicidad = periodicidad;
+    public Revista(String nombre,double precio,Periodicidad periodicidad) {
+
+        super(nombre,precio);
+        this.tieneSuscripcion = false;
+        this.periodicidad = periodicidad;
+    }
+
+    public double getPrecio(){
+        double respuesta;
+
+        if(tieneSuscripcion){
+            respuesta = this.precio * this.suscripcion.getPrecio() * periodicidad.getValor();
+        }else{
+            respuesta = this.precio;
+        }
+
+        return respuesta;
     }
 
 }
