@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+/**
+ * Tipo de objeto: Value Object
+ * */
 public class Revista extends Producto{
 
     private Suscripcion suscripcion;

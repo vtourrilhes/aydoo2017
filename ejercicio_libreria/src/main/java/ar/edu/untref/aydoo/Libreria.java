@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+
+/**
+ * Tipo de objeto: Entity
+ * */
 public class Libreria {
 
     private HashMap<Cliente,List<Compra>> comprasPorCliente;

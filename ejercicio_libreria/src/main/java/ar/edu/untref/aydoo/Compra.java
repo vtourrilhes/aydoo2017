@@ -3,6 +3,9 @@ package ar.edu.untref.aydoo;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Tipo de objeto: Entity
+ * */
 public class Compra {
 
     private List<Producto> articulos;

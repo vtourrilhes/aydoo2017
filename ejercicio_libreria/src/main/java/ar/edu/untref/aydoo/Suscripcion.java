@@ -1,5 +1,9 @@
 package ar.edu.untref.aydoo;
 
+
+/**
+ * Tipo de objeto: Value Object
+ * */
 public class Suscripcion {
 
     private TipoSuscripcion modificadorPorSuscripcion;
