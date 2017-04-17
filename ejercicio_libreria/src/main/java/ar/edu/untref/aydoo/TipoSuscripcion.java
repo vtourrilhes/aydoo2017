@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+/**
+ * Tipo de objeto: Entity
+ * */
 public enum TipoSuscripcion {
     DIARIO(31),SEMANAL(4),QUINCENAL(2),MENSUAL(1),ANUAL(.80);
 

@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+/**
+ * Tipo de objeto: Value Object
+ * */
 public class ArticuloLibreria extends Producto{
 
     private final double IVA;
