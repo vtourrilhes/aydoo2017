@@ -1,1 +1,10 @@
-Factores primos 360: 2 2 2 2 2 2 3 4 5 
+Factores primos 360: 
+2
+2
+2
+2
+2
+2
+3
+4
+5

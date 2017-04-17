@@ -67,7 +67,7 @@ public class FormatterTest {
 
         Formatter formatter = new Formatter();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
-        String expected = "\n2\n2\n2\n2\n2\n2\n3\n4\n5";
+        String expected = System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+3+System.lineSeparator()+4+System.lineSeparator()+5;
 
         try {
             Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format:quiet"));
