@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +16,7 @@ public class ArraySorter {
 
         if(format.contains("asc")) {
             Collections.sort(ordering);
-        }else if(format.contains("desc")) {
+        }else if(format.contains("des")) {
             Collections.sort(ordering);
             Collections.reverse(ordering);
         }

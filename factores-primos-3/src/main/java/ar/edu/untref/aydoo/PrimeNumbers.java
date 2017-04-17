@@ -5,15 +5,16 @@ import java.lang.reflect.Array;
 public class PrimeNumbers {
 
     private ArraySorter arraySorter;
-    private FileSystemWriter fileSystemWriter;
     private Calculator calculator;
     private Formatter formatter;
     private Integer[] answer;
+    private Integer[] sortedAnswer;
+    private boolean writeFile;
+    private String fileName;
 
     public PrimeNumbers() {
         this.calculator = new Calculator();
         this.formatter = new Formatter();
-        this.fileSystemWriter = new FileSystemWriter();
         this.arraySorter = new ArraySorter();
 
     }
@@ -21,32 +22,28 @@ public class PrimeNumbers {
     public void run(final String[] args) throws Exception {
 
         try {
-            //Recibo el numero a formatear
-            int recieviedNumber = Integer.parseInt(args[0]);
-            answer = calculator.calculatePrimeNumbers(recieviedNumber);     //Calculo el array de resultados
 
-            //itero el array de argumentos y hago  lo que se pide en caso de cada parametro
+            int recieviedNumber = Integer.parseInt(args[0]);  //Recibo el numero a formatear
+            answer = calculator.calculatePrimeNumbers(recieviedNumber); //Calculo el array de resultados
 
+            //busco parametros opcionales en el array de argumentos
             for (int i = 0; i<args.length; i++) {
-
                 if(args[i].contains("--sort=")) {
-                    this.arraySorter.sortArray(args[i],answer);
+                   sortedAnswer =  this.arraySorter.sortArray(args[i],answer);
                 }
-
                 if(args[i].contains("--output=")) {
-                    //TODO escribir en archivo
-                    //fileWritten = fileSystemWriter.makeFile(fileName);
+                    this.fileName = args[i].substring(9) + ".txt";
+                    this.writeFile =  true;
                 }
-
             }
 
             String format = args[1];
-            String fileName = args[2];
-            String order = "noOrder";
 
-            //TODO obtener parametros opcionales
+            String toDisplay = formatter.formatArrayNumbers(sortedAnswer, format);  //recibo el String para mostrarlo
 
-            String toDisplay = formatter.formatArrayNumbers(answer, format);  //recibo el String para mostrarlo
+            if(this.writeFile) {
+                this.formatter.writeToFile(sortedAnswer, format,fileName,recieviedNumber);
+            }
 
             System.out.print("Factores primos " + recieviedNumber + ": ");
             System.out.print(toDisplay);
