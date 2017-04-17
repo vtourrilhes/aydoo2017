@@ -6,14 +6,10 @@ import org.junit.Assert;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Scanner;
-
 
 public class FormatterTest {
 
@@ -25,7 +21,7 @@ public class FormatterTest {
         String expected = "2 2 2 2 2 2 3 4 5 ";
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format:pretty"));
+            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=pretty"));
         } catch (Exception e) {
             
         }
@@ -40,7 +36,7 @@ public class FormatterTest {
         String expected = "2 2 2 2 2 2 3 4 5 ";
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format:pReTTy"));
+            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=pReTTy"));
         } catch (Exception e) {
 
         }
@@ -70,7 +66,7 @@ public class FormatterTest {
         String expected = System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+3+System.lineSeparator()+4+System.lineSeparator()+5;
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format:quiet"));
+            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=quiet"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,7 +81,7 @@ public class FormatterTest {
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "\n2\n2\n2\n2\n2\n2\n3\n4\n5";
 
-        Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format:yerba"));
+        Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=yerba"));
 
 
     }
@@ -95,15 +91,14 @@ public class FormatterTest {
 
         Formatter formatter = new Formatter();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
-        String expected = "\n2\n2\n2\n2\n2\n2\n3\n4\n5";
 
         try {
-            formatter.writeToFile(numbers,"--Format:quiet","testing.txt",360);
+            formatter.writeToFile(numbers,"--Format=quiet","testing.txt",360);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        File isFileCreated = new File("testing.txt");
+        File isFileCreated = new File("target/testing.txt");
         Assert.assertTrue(isFileCreated.exists());
 
     }
@@ -115,10 +110,9 @@ public class FormatterTest {
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "Factores primos 360: "+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+3+System.lineSeparator()+4+System.lineSeparator()+5;
         String fileContent= null;
-        String content = null;
         try {
-            formatter.writeToFile(numbers,"--Format:quiet","testing.txt",360);
-            Path path = FileSystems.getDefault().getPath(".", "testing.txt");
+            formatter.writeToFile(numbers,"--Format=quiet","testing.txt",360);
+            Path path = FileSystems.getDefault().getPath(".", "target/testing.txt");
             fileContent = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -137,10 +131,9 @@ public class FormatterTest {
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "Factores primos 360: 2 2 2 2 2 2 3 4 5 ";
         String fileContent= null;
-        String content = null;
         try {
-            formatter.writeToFile(numbers,"--Format:pretty","testing.txt",360);
-            Path path = FileSystems.getDefault().getPath(".", "testing.txt");
+            formatter.writeToFile(numbers,"--Format=pretty","testing.txt",360);
+            Path path = FileSystems.getDefault().getPath(".", "target/testing.txt");
             fileContent = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

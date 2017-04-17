@@ -1,7 +1,10 @@
 package ar.edu.untref.aydoo;
 
-import javax.annotation.processing.FilerException;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Formatter {
 
@@ -9,7 +12,8 @@ public class Formatter {
      * @return Devuelve un String listo para imprimir dado el formato
      */
 
-    public String formatArrayNumbers(final Integer[] array, final String format) throws Exception {
+    public String formatArrayNumbers(final Integer[] array,
+                                     final String format) throws Exception {
 
         String answer = "";
         StringBuilder builder = new StringBuilder(answer);
@@ -29,14 +33,15 @@ public class Formatter {
                 }
                 break;
             default:
-                throw new Exception("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
+                throw new Exception("Formato no aceptado. "
+                        + "Las opciones posibles son: pretty o quiet.");
         }
 
         return builder.toString();
     }
 
-
-    public void writeToFile(Integer[] array, String format, String fileName,int recieviedNumber) {
+    public void writeToFile(final Integer[] array, final String format,
+                            final String fileName, final int recieviedNumber) {
 
         String toWrite = "";
         StringBuilder builder = new StringBuilder(toWrite);
@@ -58,8 +63,8 @@ public class Formatter {
         }
 
         try {
-            File file = new File(System.getProperty(".\\target\\"), fileName);
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+            File file = new File("target", fileName);
+            BufferedWriter out = new BufferedWriter(new FileWriter(file));
             out.write("Factores primos " + recieviedNumber + ": ");
             out.write(builder.toString());  //Replace with the string
             //you are trying to write

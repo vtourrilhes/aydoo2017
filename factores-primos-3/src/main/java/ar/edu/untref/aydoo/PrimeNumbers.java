@@ -1,7 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import java.lang.reflect.Array;
-
 public class PrimeNumbers {
 
     private ArraySorter arraySorter;
@@ -22,27 +20,30 @@ public class PrimeNumbers {
     public void run(final String[] args) throws Exception {
 
         try {
-
-            int recieviedNumber = Integer.parseInt(args[0]);  //Recibo el numero a formatear
-            answer = calculator.calculatePrimeNumbers(recieviedNumber); //Calculo el array de resultados
+            //Recibo el numero a formatear
+            int recieviedNumber = Integer.parseInt(args[0]);
+            //Calculo el array de resultados
+            answer = calculator.calculatePrimeNumbers(recieviedNumber);
 
             //busco parametros opcionales en el array de argumentos
-            for (int i = 0; i<args.length; i++) {
-                if(args[i].contains("--sort=")) {
-                   sortedAnswer =  this.arraySorter.sortArray(args[i],answer);
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].contains("--sort=")) {
+                   sortedAnswer =  this.arraySorter.sortArray(args[i], answer);
                 }
-                if(args[i].contains("--output=")) {
-                    this.fileName = args[i].substring(9) + ".txt";
+                if (args[i].contains("--output=")) {
+                    this.fileName = args[i].replace("--output=", "") + ".txt";
                     this.writeFile =  true;
                 }
             }
 
             String format = args[1];
 
-            String toDisplay = formatter.formatArrayNumbers(sortedAnswer, format);  //recibo el String para mostrarlo
-
-            if(this.writeFile) {
-                this.formatter.writeToFile(sortedAnswer, format,fileName,recieviedNumber);
+            //recibo el String para mostrarlo
+            String toDisplay = formatter.formatArrayNumbers(sortedAnswer,
+                                                            format);
+            if (this.writeFile) {
+                this.formatter.writeToFile(sortedAnswer, format,
+                        fileName, recieviedNumber);
             }
 
             System.out.print("Factores primos " + recieviedNumber + ": ");
