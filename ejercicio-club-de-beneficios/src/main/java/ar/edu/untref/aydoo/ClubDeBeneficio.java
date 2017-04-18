@@ -39,4 +39,23 @@ public class ClubDeBeneficio {
 
         return ganador;
     }
+
+    public Sucursal obtenerSucursalConMasBeneficiosOtorgados() {
+
+        Sucursal ganadora = null;
+        int ventasPorSucursal = 0;
+
+        for (Establecimiento establecimiento: this.establecimientos) {
+            for (Sucursal sucursal: establecimiento.getSucursales()) {
+                if(sucursal.getBeneficiosOtorgados()>ventasPorSucursal){
+                    ganadora = sucursal;
+                    ventasPorSucursal = sucursal.getBeneficiosOtorgados();
+                }
+            }
+        }
+
+        return ganadora;
+
+
+    }
 }

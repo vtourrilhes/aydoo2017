@@ -17,8 +17,8 @@ public class Establecimiento {
         this.sucursales = new LinkedList<>();
     }
 
-    public void addBeneficio(Descuento descuento) {
-        this.beneficios.add(descuento);
+    public void addBeneficio(Beneficio beneficio) {
+        this.beneficios.add(beneficio);
     }
 
     public int getCantidadBeneficiosOtorgados() {
@@ -34,5 +34,9 @@ public class Establecimiento {
 
     public void addSucursal(Sucursal sucursal) {
         this.sucursales.add(sucursal);
+    }
+
+    public List<Sucursal> getSucursales(){
+        return this.sucursales;
     }
 }
