@@ -5,7 +5,7 @@ import org.junit.Test;
 public class VentaTest {
 
     @Test
-    public void aplicarDescuentoTarjetaClassicTest(){
+    public void descuentoRealizado10PorCientoDeTotal000(){
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -18,11 +18,10 @@ public class VentaTest {
         // Clientes que realizaran las operaciones
         Cliente carlos = clubDeBeneficio.addCliente("Carlos", "carlos@aydoo.edu.ar", TarjetaClassic);
 
-        s1.addVenta(carlos, 1000.0); //Se aplica un 10% de descuento, osea 100 pesos
+        Venta venta1 = new Venta(carlos,new Producto("Helado tiramiss",1000),s1);
 
-        double ahorroDeCarlos = clubDeBeneficio.getMontoAhorradoPorCliente(carlos);
 
-        Assert.assertEquals(100, ahorroDeCarlos,.5);
+        Assert.assertEquals(100, venta1.getDescuentoRealizado(),.5);
 
     }
 

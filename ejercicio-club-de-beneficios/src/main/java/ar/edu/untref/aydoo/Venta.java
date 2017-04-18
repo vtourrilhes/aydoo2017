@@ -6,11 +6,13 @@ public class Venta {
     private double monto;
     private double descuentoRealizado;
     private Sucursal sucursal;
+    private Producto producto;
 
-    public Venta(Cliente cliente, double montoBruto, Sucursal sucursal) {
+    public Venta(Cliente cliente, Producto producto, Sucursal sucursal) {
         this.cliente = cliente;
         this.sucursal = sucursal;
-        double montoNeto = montoBruto;
+        double montoNeto = producto.getPrecio();
+        this.producto = producto;
 
         //reviso los beneficios del establecimiento
         for (Beneficio beneficio: sucursal.getEstablecimiento().getBeneficios()) {
@@ -21,7 +23,7 @@ public class Venta {
             }
         }
 
-        this.descuentoRealizado = montoBruto - montoNeto;
+        this.descuentoRealizado = producto.getPrecio() - montoNeto;
         this.monto = montoNeto;
     }
 

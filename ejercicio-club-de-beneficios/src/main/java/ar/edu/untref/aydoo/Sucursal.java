@@ -32,11 +32,11 @@ public class Sucursal {
         return direccion;
     }
 
-    public void addVenta(Cliente cliente, double monto) {
+    public void addVenta(Cliente cliente, Producto producto) {
 
         this.beneficiosOtorgados ++;
 
-        this.ventas.add(new Venta(cliente,monto,this));
+        this.ventas.add(new Venta(cliente,producto,this));
     }
 
     public List<Venta> getVentas(){
@@ -52,7 +52,9 @@ public class Sucursal {
         double resultado = 0;
 
         for (Venta venta: ventas) {
-            resultado = resultado + venta.getDescuentoRealizado();
+            if (cliente.equals(venta.getCliente())) {
+                resultado = resultado + venta.getDescuentoRealizado();
+            }
         }
 
         return  resultado;

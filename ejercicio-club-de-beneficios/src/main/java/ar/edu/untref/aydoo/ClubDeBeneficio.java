@@ -74,4 +74,17 @@ public class ClubDeBeneficio {
 
         return resultado;
     }
+
+    public void enviarReporteDeAhorros(){
+        //TODO
+   }
+
+    public void felicitarEstablecimiento(){
+        //TODO
+    }
+
+    public void enviarRegaloMensualASucursal(){
+        //TODO
+    }
+
 }

@@ -30,19 +30,19 @@ public class TestIntegracion {
         Cliente clientePremium = clubDeBeneficio.addCliente("Cliente Anonimo Premium", "premium@aydoo.edu.ar", TarjetaPremium);
         Cliente clienteClassic = clubDeBeneficio.addCliente("Cliente Anonimo Classic", "classic@aydoo.edu.ar", TarjetaPremium);
 
-        s1.addVenta(carlos, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(juan, 1000.0);
-        s1.addVenta(clientePremium, 1000.0);
-        s1.addVenta(clientePremium, 1000.0);
-        s3.addVenta(carlos, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 500.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
+        s1.addVenta(carlos, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(juan, new Producto("Helado",1000));
+        s1.addVenta(clientePremium, new Producto("Helado",1000));
+        s1.addVenta(clientePremium, new Producto("Helado",1000));
+        s3.addVenta(carlos, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",500));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
 
         Establecimiento establecimientoConMasBeneficiosOtorgados = clubDeBeneficio.getEstablecimientoConMasBeneficiosOtorgados();
 
@@ -76,19 +76,19 @@ public class TestIntegracion {
         Cliente clientePremium = clubDeBeneficio.addCliente("Cliente Anonimo Premium", "premium@aydoo.edu.ar", TarjetaPremium);
         Cliente clienteClassic = clubDeBeneficio.addCliente("Cliente Anonimo Classic", "classic@aydoo.edu.ar", TarjetaPremium);
 
-        s1.addVenta(carlos, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(juan, 1000.0);
-        s1.addVenta(clientePremium, 1000.0);
-        s1.addVenta(clientePremium, 1000.0);
-        s3.addVenta(carlos, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 500.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
+        s1.addVenta(carlos, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(juan, new Producto("Helado",1000));
+        s1.addVenta(clientePremium, new Producto("Helado",1000));
+        s1.addVenta(clientePremium, new Producto("Helado",1000));
+        s3.addVenta(carlos, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",500));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
 
         Sucursal sucursalConMasBeneficiosOtorgados = clubDeBeneficio.getSucursalConMasBeneficiosOtorgados();
 
@@ -122,24 +122,71 @@ public class TestIntegracion {
         Cliente clientePremium = clubDeBeneficio.addCliente("Cliente Anonimo Premium", "premium@aydoo.edu.ar", TarjetaPremium);
         Cliente clienteClassic = clubDeBeneficio.addCliente("Cliente Anonimo Classic", "classic@aydoo.edu.ar", TarjetaPremium);
 
-        s1.addVenta(carlos, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(clienteClassic, 1000.0);
-        s1.addVenta(juan, 1000.0);
-        s1.addVenta(clientePremium, 1000.0);
-        s1.addVenta(clientePremium, 1000.0);
-        s3.addVenta(carlos, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 500.0);
-        s3.addVenta(clienteClassic, 1000.0);
-        s3.addVenta(clienteClassic, 1000.0);
+        s1.addVenta(carlos, new Producto("Helado",1000)); //100 pesos ahorrados
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(clienteClassic, new Producto("Helado",1000));
+        s1.addVenta(juan, new Producto("Helado",1000));
+        s1.addVenta(clientePremium, new Producto("Helado",1000));
+        s1.addVenta(clientePremium, new Producto("Helado",1000));
+        s3.addVenta(carlos, new Producto("Helado",1000)); //200 pesos ahorrados
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",500));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
+        s3.addVenta(clienteClassic, new Producto("Helado",1000));
 
         double ahorroDeCarlos = clubDeBeneficio.getMontoAhorradoPorCliente(carlos);
 
-        Assert.assertEquals("2222", ahorroDeCarlos);
+        Assert.assertEquals(300, ahorroDeCarlos,.5);
 
     }
+
+    @Test
+    public void aplicarDescuentoTarjetaClassicUnicaCompraTest(){
+
+        ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
+        // Tarjetas ofrecidas
+        Tarjeta TarjetaClassic = new TarjetaClassic();
+        // Estableclimiento Heladeria A , sucursales y tipos de beneficio segun tarjeta
+        Establecimiento heladeriaA = new Establecimiento("Heladeria A", "heladeria@restaurantB.edu.ar");
+        heladeriaA.addBeneficio(new Descuento(10,TarjetaClassic));
+        Sucursal s1 = new Sucursal("s1", "Direccion s1", heladeriaA);
+        clubDeBeneficio.addEstablecimiento(heladeriaA);
+        // Clientes que realizaran las operaciones
+        Cliente carlos = clubDeBeneficio.addCliente("Carlos", "carlos@aydoo.edu.ar", TarjetaClassic);
+
+        s1.addVenta(carlos, new Producto("Helado",1000)); //Se aplica un 10% de descuento, osea 100 pesos
+
+        double ahorroDeCarlos = clubDeBeneficio.getMontoAhorradoPorCliente(carlos);
+
+        Assert.assertEquals(100, ahorroDeCarlos,.5);
+
+    }
+
+    @Test
+    public void aplicarDescuentoTarjetaClassicMultiplesComprasTest(){
+
+        ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
+        // Tarjetas ofrecidas
+        Tarjeta TarjetaClassic = new TarjetaClassic();
+        // Estableclimiento Heladeria A , sucursales y tipos de beneficio segun tarjeta
+        Establecimiento heladeriaA = new Establecimiento("Heladeria A", "heladeria@restaurantB.edu.ar");
+        heladeriaA.addBeneficio(new Descuento(10,TarjetaClassic));
+        Sucursal s1 = new Sucursal("s1", "Direccion s1", heladeriaA);
+        clubDeBeneficio.addEstablecimiento(heladeriaA);
+        // Clientes que realizaran las operaciones
+        Cliente carlos = clubDeBeneficio.addCliente("Carlos", "carlos@aydoo.edu.ar", TarjetaClassic);
+
+        s1.addVenta(carlos, new Producto("Helado",1000)); //Se aplica un 10% de descuento, osea 100 pesos
+        s1.addVenta(carlos, new Producto("Helado",500)); //Se aplica un 10% de descuento, osea 50 pesos
+        s1.addVenta(carlos, new Producto("Helado",100)); //Se aplica un 10% de descuento, osea 10 pesos
+
+        double ahorroDeCarlos = clubDeBeneficio.getMontoAhorradoPorCliente(carlos);
+
+        Assert.assertEquals(160, ahorroDeCarlos,.5);
+
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,4 +57,5 @@ public class Establecimiento {
 
         return  resultado;
     }
+
 }

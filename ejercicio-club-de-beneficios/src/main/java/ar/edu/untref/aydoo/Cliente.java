@@ -24,4 +24,12 @@ public class Cliente {
     public Tarjeta getTarjeta() {
         return tarjeta;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
