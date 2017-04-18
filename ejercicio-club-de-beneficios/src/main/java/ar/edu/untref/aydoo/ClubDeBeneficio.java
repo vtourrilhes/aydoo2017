@@ -27,7 +27,16 @@ public class ClubDeBeneficio {
 
     public Establecimiento getEstablecimientoConMasBeneficiosOtorgados() {
 
-        return establecimientos.get(0);
+        Establecimiento ganador = null;
+        int cantidadBeneficiosGanador = 0;
 
+        for (Establecimiento establecimiento: establecimientos) {
+            if(establecimiento.getCantidadBeneficiosOtorgados()>cantidadBeneficiosGanador) {
+                cantidadBeneficiosGanador = establecimiento.getCantidadBeneficiosOtorgados();
+                ganador = establecimiento;
+            }
+        }
+
+        return ganador;
     }
 }

@@ -9,14 +9,12 @@ public class Establecimiento {
     private String mail;
     private List<Beneficio> beneficios;
     private List<Sucursal> sucursales;
-    private int cantidadBeneficiosOtorgados;
 
     public Establecimiento(String nombre, String mail) {
         this.nombre = nombre;
         this.mail = mail;
         this.beneficios = new LinkedList<>();
         this.sucursales = new LinkedList<>();
-        this.cantidadBeneficiosOtorgados = 0;
     }
 
     public void addBeneficio(Descuento descuento) {
@@ -24,7 +22,14 @@ public class Establecimiento {
     }
 
     public int getCantidadBeneficiosOtorgados() {
-        return this.cantidadBeneficiosOtorgados;
+
+        int cantidadTotalBeneficiosOtorgados = 0;
+
+        for (Sucursal sucursal: sucursales) {
+            cantidadTotalBeneficiosOtorgados = cantidadTotalBeneficiosOtorgados + sucursal.getBeneficiosOtorgados();
+        }
+
+        return cantidadTotalBeneficiosOtorgados;
     }
 
     public void addSucursal(Sucursal sucursal) {

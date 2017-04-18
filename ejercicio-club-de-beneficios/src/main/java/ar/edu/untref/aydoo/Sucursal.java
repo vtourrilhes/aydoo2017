@@ -9,6 +9,7 @@ public class Sucursal {
     private List<Venta> ventas;
     private String nombre;
     private String direccion;
+    private int beneficiosOtorgados;
 
     public Sucursal(String nombre, String direccion, Establecimiento establecimiento) {
         this.nombre = nombre;
@@ -16,6 +17,7 @@ public class Sucursal {
         this.establecimiento = establecimiento;
         establecimiento.addSucursal(this);
         this.ventas = new LinkedList<>();
+        this.beneficiosOtorgados = 0;
     }
 
     public Establecimiento getEstablecimiento() {
@@ -31,6 +33,13 @@ public class Sucursal {
     }
 
     public void addVenta(Cliente cliente, double monto) {
+
+        this.beneficiosOtorgados ++;
+
         this.ventas.add(new Venta(cliente,monto));
+    }
+
+    public int getBeneficiosOtorgados(){
+        return this.beneficiosOtorgados;
     }
 }
