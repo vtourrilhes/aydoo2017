@@ -32,11 +32,11 @@ public class Sucursal {
         return direccion;
     }
 
-    public void addVenta(Cliente cliente, Producto producto) {
+    public void addVenta(Cliente cliente, Producto producto, Mes mes) {
 
         this.beneficiosOtorgados ++;
 
-        this.ventas.add(new Venta(cliente,producto,this));
+        this.ventas.add(new Venta(cliente,producto,this,mes));
     }
 
     public List<Venta> getVentas(){
