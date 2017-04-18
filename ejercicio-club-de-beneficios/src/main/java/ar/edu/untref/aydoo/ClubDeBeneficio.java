@@ -1,25 +1,28 @@
 package ar.edu.untref.aydoo;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class ClubDeBeneficio {
 
     private List<Establecimiento> establecimientos;
+    private List<Cliente> clientes;
 
     public ClubDeBeneficio(){
+
         this.establecimientos = new LinkedList<>();
+        this.clientes = new LinkedList<>();
     }
 
     public void addEstablecimiento(Establecimiento establecimiento) {
         this.establecimientos.add(establecimiento);
     }
 
-    public Cliente addSuscripcion(String nombre, String email, Tarjeta tarjeta) {
+    public Cliente addCliente(String nombre, String email, Tarjeta tarjeta) {
 
-        Cliente cliente = new Cliente(nombre,email);
-
-        Suscripcion suscripcion = new Suscripcion(cliente,tarjeta);
+        Cliente cliente = new Cliente(nombre,email,tarjeta);
 
         return cliente;
 
@@ -40,7 +43,7 @@ public class ClubDeBeneficio {
         return ganador;
     }
 
-    public Sucursal obtenerSucursalConMasBeneficiosOtorgados() {
+    public Sucursal getSucursalConMasBeneficiosOtorgados() {
 
         Sucursal ganadora = null;
         int ventasPorSucursal = 0;
@@ -57,5 +60,18 @@ public class ClubDeBeneficio {
         return ganadora;
 
 
+    }
+
+    public double getMontoAhorradoPorCliente(Cliente cliente) {
+
+        double resultado = 0;
+
+        for (Establecimiento establecimiento: this.establecimientos) {
+
+            resultado = resultado + establecimiento.getAhorroPorCliente(cliente);
+
+        }
+
+        return resultado;
     }
 }

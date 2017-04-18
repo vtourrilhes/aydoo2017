@@ -1,21 +1,27 @@
 package ar.edu.untref.aydoo;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Cliente {
 
     private String nombre;
     private String email;
-    private Suscripcion suscripcion;
+    private Tarjeta tarjeta;
+    private List<Beneficio> beneficios;
 
-    public Cliente(String nombre, String email) {
+    public Cliente(String nombre, String email,Tarjeta tarjeta) {
         this.nombre = nombre;
         this.email = email;
+        this.tarjeta = tarjeta;
+        this.beneficios = new LinkedList<>();
     }
 
-    public Suscripcion getSuscripcion() {
-        return suscripcion;
+    public void addBeneficio(Beneficio beneficio){
+        this.beneficios.add(beneficio);
     }
 
-    public void setSuscripcion(Suscripcion suscripcion) {
-        this.suscripcion = suscripcion;
+    public Tarjeta getTarjeta() {
+        return tarjeta;
     }
 }

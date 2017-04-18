@@ -36,10 +36,25 @@ public class Sucursal {
 
         this.beneficiosOtorgados ++;
 
-        this.ventas.add(new Venta(cliente,monto));
+        this.ventas.add(new Venta(cliente,monto,this));
+    }
+
+    public List<Venta> getVentas(){
+        return  this.ventas;
     }
 
     public int getBeneficiosOtorgados(){
         return this.beneficiosOtorgados;
+    }
+
+    public double getAhorroPorCliente(Cliente cliente) {
+
+        double resultado = 0;
+
+        for (Venta venta: ventas) {
+            resultado = resultado + venta.getDescuentoRealizado();
+        }
+
+        return  resultado;
     }
 }

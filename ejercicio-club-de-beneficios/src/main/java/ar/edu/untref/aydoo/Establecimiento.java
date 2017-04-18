@@ -21,6 +21,10 @@ public class Establecimiento {
         this.beneficios.add(beneficio);
     }
 
+    public List<Beneficio> getBeneficios() {
+        return beneficios;
+    }
+
     public int getCantidadBeneficiosOtorgados() {
 
         int cantidadTotalBeneficiosOtorgados = 0;
@@ -38,5 +42,18 @@ public class Establecimiento {
 
     public List<Sucursal> getSucursales(){
         return this.sucursales;
+    }
+
+    public double getAhorroPorCliente(Cliente cliente) {
+
+        double resultado = 0;
+
+        for (Sucursal sucursal: this.sucursales) {
+
+            resultado = resultado + sucursal.getAhorroPorCliente(cliente);
+
+        }
+
+        return  resultado;
     }
 }

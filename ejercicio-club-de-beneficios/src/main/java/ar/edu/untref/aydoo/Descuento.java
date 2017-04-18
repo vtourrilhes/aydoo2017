@@ -9,7 +9,8 @@ public class Descuento extends Beneficio{
         this.descuento = descuento;
     }
 
-    public double getDescuento() {
-        return descuento;
+    @Override
+    public double aplicarPromocion(double monto) {
+       return monto * (1- descuento / 100);
     }
 }
