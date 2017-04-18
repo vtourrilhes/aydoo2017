@@ -1,9 +1,7 @@
 package ar.edu.untref.aydoo;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class ClubDeBeneficio {
 
@@ -62,13 +60,13 @@ public class ClubDeBeneficio {
 
     }
 
-    public double getMontoAhorradoPorCliente(Cliente cliente) {
+    public double getMontoAhorradoPorCliente(Cliente cliente, Mes mes) {
 
         double resultado = 0;
 
         for (Establecimiento establecimiento: this.establecimientos) {
 
-            resultado = resultado + establecimiento.getAhorroPorCliente(cliente);
+            resultado = resultado + establecimiento.getAhorroPorCliente(cliente,mes);
 
         }
 

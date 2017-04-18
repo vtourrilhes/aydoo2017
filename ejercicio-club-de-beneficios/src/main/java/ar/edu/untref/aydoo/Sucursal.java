@@ -47,12 +47,12 @@ public class Sucursal {
         return this.beneficiosOtorgados;
     }
 
-    public double getAhorroPorCliente(Cliente cliente) {
+    public double getAhorroPorCliente(Cliente cliente, Mes mes) {
 
         double resultado = 0;
 
         for (Venta venta: ventas) {
-            if (cliente.equals(venta.getCliente())) {
+            if (cliente.equals(venta.getCliente()) && venta.getMes().equals(mes)) {
                 resultado = resultado + venta.getDescuentoRealizado();
             }
         }

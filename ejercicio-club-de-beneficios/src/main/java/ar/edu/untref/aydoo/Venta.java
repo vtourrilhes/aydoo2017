@@ -44,4 +44,8 @@ public class Venta {
     public double getDescuentoRealizado() {
         return descuentoRealizado;
     }
+
+    public Mes getMes() {
+        return mes;
+    }
 }

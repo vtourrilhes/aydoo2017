@@ -45,13 +45,13 @@ public class Establecimiento {
         return this.sucursales;
     }
 
-    public double getAhorroPorCliente(Cliente cliente) {
+    public double getAhorroPorCliente(Cliente cliente, Mes mes) {
 
         double resultado = 0;
 
         for (Sucursal sucursal: this.sucursales) {
 
-            resultado = resultado + sucursal.getAhorroPorCliente(cliente);
+            resultado = resultado + sucursal.getAhorroPorCliente(cliente,mes);
 
         }
 

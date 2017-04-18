@@ -20,7 +20,6 @@ public class VentaTest {
 
         Venta venta1 = new Venta(carlos,new Producto("Helado tiramiss",1000),s1,Mes.ENERO);
 
-
         Assert.assertEquals(100, venta1.getDescuentoRealizado(),.5);
 
     }
