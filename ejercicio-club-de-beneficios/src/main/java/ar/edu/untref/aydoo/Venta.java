@@ -21,11 +21,14 @@ public class Venta {
 
             //si la tarjeta que tiene el cliente coincide con la tarjeta de algun beneficio, realizo el beneficio
             if(beneficio.getTarjeta().equals(cliente.getTarjeta())) {
+
+                this.descuentoRealizado = beneficio.getDescuentoRealizado(montoNeto);
+
                 montoNeto = beneficio.aplicarPromocion(montoNeto);
+
             }
         }
 
-        this.descuentoRealizado = producto.getPrecio() - montoNeto;
         this.monto = montoNeto;
     }
 
@@ -47,5 +50,9 @@ public class Venta {
 
     public Mes getMes() {
         return mes;
+    }
+
+    public Producto getProducto() {
+        return producto;
     }
 }

@@ -11,6 +11,11 @@ public class Descuento extends Beneficio{
 
     @Override
     public double aplicarPromocion(double monto) {
-       return monto * (1- descuento / 100);
+       return monto * ( 1- descuento / 100 );
+    }
+
+    @Override
+    public double getDescuentoRealizado(double monto) {
+        return monto - (monto * ( 1- descuento / 100 ));
     }
 }

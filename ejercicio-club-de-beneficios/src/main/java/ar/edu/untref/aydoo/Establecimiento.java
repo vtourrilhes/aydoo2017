@@ -37,6 +37,17 @@ public class Establecimiento {
         return cantidadTotalBeneficiosOtorgados;
     }
 
+    public int getCantidadBeneficiosOtorgadosPorMes(Mes mes) {
+
+        int cantidadTotalBeneficiosOtorgados = 0;
+
+        for (Sucursal sucursal: sucursales) {
+            cantidadTotalBeneficiosOtorgados = cantidadTotalBeneficiosOtorgados + sucursal.getBeneficiosOtorgadosPorMes(mes);
+        }
+
+        return cantidadTotalBeneficiosOtorgados;
+    }
+
     public void addSucursal(Sucursal sucursal) {
         this.sucursales.add(sucursal);
     }
@@ -58,4 +69,11 @@ public class Establecimiento {
         return  resultado;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getMail() {
+        return mail;
+    }
 }

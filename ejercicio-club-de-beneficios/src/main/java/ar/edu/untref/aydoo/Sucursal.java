@@ -1,7 +1,9 @@
 package ar.edu.untref.aydoo;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Sucursal {
 
@@ -45,6 +47,48 @@ public class Sucursal {
 
     public int getBeneficiosOtorgados(){
         return this.beneficiosOtorgados;
+    }
+
+    public int getBeneficiosOtorgadosPorMes(Mes mes){
+        int cantidadBeneficiosPorMes = 0;
+        for (Venta venta: ventas) {
+            if(venta.getMes().equals(mes)){
+                cantidadBeneficiosPorMes = cantidadBeneficiosPorMes+1;
+            }
+        }
+
+        return cantidadBeneficiosPorMes;
+    }
+
+    public int getCantidadClientesAtendidos(Mes mes){
+
+        Set<Cliente> conjuntoClientes = new HashSet<>(); //un set asi no se repiten los clientes
+
+        for (Venta venta: ventas) {
+            if(venta.getMes().equals(mes)) {
+                conjuntoClientes.add(venta.getCliente());
+            }
+        }
+
+        return conjuntoClientes.size();
+
+    }
+
+    public List<Venta> getVentasPorMesCliente(Cliente cliente,Mes mes){
+
+        List<Venta> ventasRealizadasACliente = new LinkedList<>();
+
+        for (Venta venta: this.ventas){
+
+            //si los meses coinciden y el descuento realizado sobre el producto es mayor a cero entonces la agrego a la lista de ventas
+            if( mes.equals(venta.getMes()) && venta.getDescuentoRealizado()>0) {
+                ventasRealizadasACliente.add(venta);
+            }
+
+        }
+
+        return ventasRealizadasACliente;
+
     }
 
     public double getAhorroPorCliente(Cliente cliente, Mes mes) {

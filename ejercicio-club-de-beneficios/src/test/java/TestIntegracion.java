@@ -1,4 +1,5 @@
 import ar.edu.untref.aydoo.*;
+import gherkin.lexer.Es;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -188,7 +189,6 @@ public class TestIntegracion {
 
     }
 
-
     @Test
     public void testGetTotalDeAhorroPorClienteMesDiferente() {
 
@@ -236,6 +236,29 @@ public class TestIntegracion {
 
     }
 
+    @Test
+    public void testCasoDosPorUno(){
+        /**
+         * Mateo compra con su tarjeta classic el libro "Martín Fierro" ($100) en la librería la librería "El altillo" (sucursal única).
+         * Esta librería está asociada al club y ofrece el beneficio 2x1. Entonces Mateo elige como segundo libro "El Cantar del Cid" ($80)
+         * pero como tiene el beneficio este segundo libro le resultar gratis. O sea
+         * que Mateo se lleva estos dos libros por $100 (el beneficio 2x1 tomo como referencia el  precio del libro más alto)*/
+
+        Tarjeta classic = new TarjetaClassic();
+        Cliente cliente = new Cliente("mateo","mateo@gmail.com",classic);
+        ClubDeBeneficio club = new ClubDeBeneficio();
+        Establecimiento libreria = new Establecimiento("El altillo","altillo@gmail.com");
+        Sucursal sucursalUnica = new Sucursal("s1","Avenida de mayo 1200",libreria);
+        DosPorUno dosPorUno = new DosPorUno(classic);
+        Producto martinFierro = new Producto("Martin Fierro",100);
+        Producto elCid = new Producto("El cantar del Cid",80);
+        dosPorUno.setProductos(martinFierro,elCid);
+        libreria.addBeneficio(dosPorUno);
+        club.addEstablecimiento(libreria);
+
+        sucursalUnica.addVenta(cliente,martinFierro,Mes.ENERO);
+
+    }
 
 
 }

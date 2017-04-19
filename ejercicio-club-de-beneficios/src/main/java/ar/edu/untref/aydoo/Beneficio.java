@@ -5,7 +5,6 @@ public abstract class Beneficio {
     protected Tarjeta tarjeta;
 
     public Beneficio(Tarjeta tarjeta) {
-
         this.tarjeta = tarjeta;
         tarjeta.setBeneficio(this);
     }
@@ -15,4 +14,5 @@ public abstract class Beneficio {
     }
 
     public abstract double aplicarPromocion(double monto);
+    public abstract double getDescuentoRealizado(double monto);
 }
