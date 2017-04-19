@@ -36,23 +36,20 @@ public class Venta {
         return cliente;
     }
 
-    public double getMonto() {
-        return monto;
+    public Mes getMes() {
+        return mes;
     }
 
     public Sucursal getSucursal() {
         return sucursal;
+    }
+    
+    public Producto getProducto() {
+        return producto;
     }
 
     public double getDescuentoRealizado() {
         return descuentoRealizado;
     }
 
-    public Mes getMes() {
-        return mes;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
 }

@@ -80,8 +80,8 @@ public class Sucursal {
 
         for (Venta venta: this.ventas){
 
-            //si los meses coinciden y el descuento realizado sobre el producto es mayor a cero entonces la agrego a la lista de ventas
-            if( mes.equals(venta.getMes()) && venta.getDescuentoRealizado()>0) {
+            //si los meses coinciden ,el cliente es el mismo y el descuento realizado sobre el producto es mayor a cero entonces la agrego a la lista de ventas
+            if( cliente.equals(venta.getCliente()) && mes.equals(venta.getMes()) && venta.getDescuentoRealizado()>0) {
                 ventasRealizadasACliente.add(venta);
             }
 

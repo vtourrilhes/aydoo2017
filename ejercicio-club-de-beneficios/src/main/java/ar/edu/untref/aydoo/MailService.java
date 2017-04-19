@@ -46,7 +46,7 @@ public class MailService {
         builder.append("Suma de descuentos en "+ mes.toString().toLowerCase()+": "+descuentosTotalesPorCliente);
 
         //envio el mail
-        return email;
+        return builder.toString();
 
     }
 }
