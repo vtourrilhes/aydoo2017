@@ -1,11 +1,12 @@
 import ar.edu.untref.aydoo.*;
+import ar.edu.untref.aydoo.Exception.DescuentoInvalidoException;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class VentaTest {
 
     @Test
-    public void descuentoRealizado10PorCientoDeTotal000(){
+    public void descuentoRealizado10PorCientoDeTotal000() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas

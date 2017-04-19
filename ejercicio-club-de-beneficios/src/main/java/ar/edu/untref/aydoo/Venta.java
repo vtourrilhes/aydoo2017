@@ -43,7 +43,7 @@ public class Venta {
     public Sucursal getSucursal() {
         return sucursal;
     }
-    
+
     public Producto getProducto() {
         return producto;
     }

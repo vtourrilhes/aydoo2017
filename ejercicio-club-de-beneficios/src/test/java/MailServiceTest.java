@@ -1,11 +1,12 @@
 import ar.edu.untref.aydoo.*;
+import ar.edu.untref.aydoo.Exception.DescuentoInvalidoException;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class MailServiceTest {
 
     @Test
-    public void sendMailFelicitacionEstablecimiento(){
+    public void sendMailFelicitacionEstablecimiento() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -52,7 +53,7 @@ public class MailServiceTest {
     }
 
     @Test
-    public void sendMailFelicitacionSucursal(){
+    public void sendMailFelicitacionSucursal() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -100,7 +101,7 @@ public class MailServiceTest {
 
 
     @Test
-    public void sendReporteCliente(){
+    public void sendReporteCliente() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas

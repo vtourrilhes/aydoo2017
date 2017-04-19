@@ -1,4 +1,6 @@
 import ar.edu.untref.aydoo.*;
+import ar.edu.untref.aydoo.Exception.DescuentoInvalidoException;
+import ar.edu.untref.aydoo.Exception.DosPorUnoInvalidoException;
 import gherkin.lexer.Es;
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,7 +8,7 @@ import org.junit.Test;
 public class TestIntegracion {
 
     @Test
-    public void testGetEstablecimientoConMasBeneficiosOtorgados() {
+    public void testGetEstablecimientoConMasBeneficiosOtorgados() throws DescuentoInvalidoException {
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
         Tarjeta TarjetaPremium = new TarjetaPremium();
@@ -51,7 +53,7 @@ public class TestIntegracion {
     }
 
     @Test
-    public void testGetSucursalConMasBeneficiosOtorgados() {
+    public void testGetSucursalConMasBeneficiosOtorgados() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -97,7 +99,7 @@ public class TestIntegracion {
     }
 
     @Test
-    public void testGetTotalDeAhorroPorCliente() {
+    public void testGetTotalDeAhorroPorCliente() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -144,7 +146,7 @@ public class TestIntegracion {
     }
 
     @Test
-    public void aplicarDescuentoTarjetaClassicUnicaCompraTest(){
+    public void aplicarDescuentoTarjetaClassicUnicaCompraTest() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -166,7 +168,7 @@ public class TestIntegracion {
     }
 
     @Test
-    public void aplicarDescuentoTarjetaClassicMultiplesComprasTest(){
+    public void aplicarDescuentoTarjetaClassicMultiplesComprasTest() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -190,7 +192,7 @@ public class TestIntegracion {
     }
 
     @Test
-    public void testGetTotalDeAhorroPorClienteMesDiferente() {
+    public void testGetTotalDeAhorroPorClienteMesDiferente() throws DescuentoInvalidoException {
 
         ClubDeBeneficio clubDeBeneficio = new ClubDeBeneficio();
         // Tarjetas ofrecidas
@@ -237,12 +239,7 @@ public class TestIntegracion {
     }
 
     @Test
-    public void testCasoDosPorUno(){
-        /**
-         * Mateo compra con su tarjeta classic el libro "Martín Fierro" ($100) en la librería la librería "El altillo" (sucursal única).
-         * Esta librería está asociada al club y ofrece el beneficio 2x1. Entonces Mateo elige como segundo libro "El Cantar del Cid" ($80)
-         * pero como tiene el beneficio este segundo libro le resultar gratis. O sea
-         * que Mateo se lleva estos dos libros por $100 (el beneficio 2x1 tomo como referencia el  precio del libro más alto)*/
+    public void testCasoDosPorUno() throws DosPorUnoInvalidoException {
 
         Tarjeta classic = new TarjetaClassic();
         Cliente cliente = new Cliente("mateo","mateo@gmail.com",classic);

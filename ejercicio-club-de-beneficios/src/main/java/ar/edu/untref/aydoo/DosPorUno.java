@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import ar.edu.untref.aydoo.Exception.DosPorUnoInvalidoException;
+
 public class DosPorUno extends Beneficio{
 
     private Producto productoPrecioMayor;
@@ -9,7 +11,12 @@ public class DosPorUno extends Beneficio{
         super(tarjeta);
     }
 
-    public void setProductos(Producto p1,Producto p2){
+    public void setProductos(Producto p1,Producto p2) throws DosPorUnoInvalidoException {
+
+        if(p1.getPrecio()<100 && p2.getPrecio() <100){
+            throw new DosPorUnoInvalidoException();
+        }
+
         if(p1.getPrecio()>p2.getPrecio()) {
             this.productoPrecioMayor = p1;
             this.productoPrecioMenor = p2;
