@@ -9,32 +9,36 @@ public class PrimeNumbers {
     private Integer[] sortedAnswer;
     private boolean writeFile;
     private String fileName;
+    private String sort;
 
     public PrimeNumbers() {
         this.calculator = new Calculator();
         this.formatter = new Formatter();
         this.arraySorter = new ArraySorter();
-
+        this.sort = "--sort=asc";
     }
 
     public void run(final String[] args) throws Exception {
 
         try {
-            //Recibo el numero a formatear
-            int recieviedNumber = Integer.parseInt(args[0]);
-            //Calculo el array de resultados
-            answer = calculator.calculatePrimeNumbers(recieviedNumber);
+
+            int receiviedNumber = Integer.parseInt(args[0]);
 
             //busco parametros opcionales en el array de argumentos
             for (int i = 0; i < args.length; i++) {
                 if (args[i].contains("--sort=")) {
-                   sortedAnswer =  this.arraySorter.sortArray(args[i], answer);
+                    this.sort = args[i];
                 }
-                if (args[i].contains("--output=")) {
-                    this.fileName = args[i].replace("--output=", "") + ".txt";
+                if (args[i].contains("--output-file=")) {
+                    this.fileName = args[i].replace("--output-file=", "");
                     this.writeFile =  true;
                 }
             }
+
+            //Calculo el array de resultados
+            answer = calculator.calculatePrimeNumbers(receiviedNumber);
+
+            sortedAnswer =  this.arraySorter.sortArray(sort, answer);
 
             String format = args[1];
 
@@ -43,10 +47,10 @@ public class PrimeNumbers {
                                                             format);
             if (this.writeFile) {
                 this.formatter.writeToFile(sortedAnswer, format,
-                        fileName, recieviedNumber);
+                        fileName, receiviedNumber);
             }
 
-            System.out.print("Factores primos " + recieviedNumber + ": ");
+            System.out.print("Factores primos " + receiviedNumber + ": ");
             System.out.print(toDisplay);
 
         } catch (Exception e) {
