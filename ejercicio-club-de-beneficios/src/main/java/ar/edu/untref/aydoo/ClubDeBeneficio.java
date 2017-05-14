@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,8 +21,9 @@ public class ClubDeBeneficio {
     public Cliente addCliente(String nombre, String email, Tarjeta tarjeta) {
 
         Cliente cliente = new Cliente(nombre,email,tarjeta);
+        this.clientes.add(cliente);
+        return new Cliente(nombre,email,tarjeta);
 
-        return cliente;
 
     }
 
@@ -74,18 +74,20 @@ public class ClubDeBeneficio {
         return resultado;
     }
 
-    public void enviarReporteDeAhorros(Mes mes){
+    public int enviarReporteDeAhorros(Mes mes){
 
-        //por cada cliente
+        int reportesEnviados = 0;
+
         for (Cliente cliente: this.clientes){
 
-            //obtengo las ventas en ese mes de ese cliente
             List<Venta> comprasCliente = this.getVentasPorCliente(cliente,mes);
 
-            //envio el reporte al mailService(el reporte se procesa en mail service con la lista de ventas)
             MailService.sendReporteCliente(cliente,mes,comprasCliente);
 
+            reportesEnviados++;
         }
+
+        return reportesEnviados;
 
    }
 
@@ -106,9 +108,8 @@ public class ClubDeBeneficio {
         return comprasClientePorMes;
     }
 
-    public String felicitarEstablecimiento(Mes mes){
+    public Establecimiento felicitarEstablecimiento(Mes mes){
 
-        //busco el establecimiento ganador
         Establecimiento ganador = null;
         int cantidadBeneficiosGanador = 0;
 
@@ -119,14 +120,13 @@ public class ClubDeBeneficio {
             }
         }
 
-        //envio el mail
-        return MailService.sendMailFelicitacionEstablecimiento(ganador);
+        MailService.sendMailFelicitacionEstablecimiento(ganador);
 
+        return ganador;
     }
 
-    public String enviarRegaloMensualASucursal(Mes mes){
+    public Sucursal enviarRegaloMensualASucursal(Mes mes){
 
-        //busco el establecimiento ganador
         Sucursal ganadora = null;
         int cantidadClientesAtendidos = 0;
 
@@ -139,8 +139,9 @@ public class ClubDeBeneficio {
             }
         }
 
-        //envio el mail
-        return MailService.sendMailFelicitacionSucursal(ganadora);
+        MailService.sendMailFelicitacionSucursal(ganadora);
+
+        return ganadora;
 
     }
 

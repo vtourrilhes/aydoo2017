@@ -17,10 +17,6 @@ public class Cliente {
         this.beneficios = new LinkedList<>();
     }
 
-    public void addBeneficio(Beneficio beneficio){
-        this.beneficios.add(beneficio);
-    }
-
     public Tarjeta getTarjeta() {
         return tarjeta;
     }
@@ -29,7 +25,4 @@ public class Cliente {
         return nombre;
     }
 
-    public String getEmail() {
-        return email;
-    }
 }

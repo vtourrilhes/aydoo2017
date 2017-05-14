@@ -6,16 +6,13 @@ public class MailService {
 
     public static String sendMailFelicitacionEstablecimiento(Establecimiento establecimiento){
 
-        String email = "Felicitaciones " + establecimiento.getNombre() + "!";
+        return  "Felicitaciones " + establecimiento.getNombre() + "!";
 
-        return email;
     }
 
     public static String sendMailFelicitacionSucursal(Sucursal sucursal) {
 
-        String email = "Felicitaciones " + sucursal.getNombre() + "!";
-
-        return email;
+        return "Felicitaciones " + sucursal.getNombre() + "!";
 
     }
 
@@ -23,7 +20,7 @@ public class MailService {
 
         String email = "";
         StringBuilder builder = new StringBuilder(email);
-        builder.append("Compras realizadas por cliente "+cliente.getNombre()+System.getProperty("line.separator"));
+        builder.append("Compras realizadas por cliente ").append(cliente.getNombre()).append(System.getProperty("line.separator"));
 
 
         //por cada producto de la lista voy a enviar datos de cada venta realizada
@@ -32,18 +29,13 @@ public class MailService {
         for (Venta venta: comprasCliente) {
 
             //armo el string del mail
-            builder.append("Producto: "+venta.getProducto().getNombre()+
-                            " Precio bruto producto: "+venta.getProducto().getPrecio()+
-                            " Descuento realizado en producto: "+venta.getDescuentoRealizado()+
-                            " Establecimiento: "+venta.getSucursal().getEstablecimiento().getNombre()+
-                            System.getProperty("line.separator")
-            );
+            builder.append("Producto: ").append(venta.getProducto().getNombre()).append(" Precio bruto producto: ").append(venta.getProducto().getPrecio()).append(" Descuento realizado en producto: ").append(venta.getDescuentoRealizado()).append(" Establecimiento: ").append(venta.getSucursal().getEstablecimiento().getNombre()).append(System.getProperty("line.separator"));
 
             descuentosTotalesPorCliente = descuentosTotalesPorCliente + venta.getDescuentoRealizado();
         }
 
         //especifico descuentos totales realizados
-        builder.append("Suma de descuentos en "+ mes.toString().toLowerCase()+": "+descuentosTotalesPorCliente);
+        builder.append("Suma de descuentos en ").append(mes.toString().toLowerCase()).append(": ").append(descuentosTotalesPorCliente);
 
         //envio el mail
         return builder.toString();

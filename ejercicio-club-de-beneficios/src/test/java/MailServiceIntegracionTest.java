@@ -3,7 +3,7 @@ import ar.edu.untref.aydoo.Exception.DescuentoInvalidoException;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MailServiceTest {
+public class MailServiceIntegracionTest {
 
     @Test
     public void sendMailFelicitacionEstablecimiento() throws DescuentoInvalidoException {
