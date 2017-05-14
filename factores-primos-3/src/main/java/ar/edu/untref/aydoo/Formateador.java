@@ -6,28 +6,27 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Formatter {
+public class Formateador {
 
     /**
      * @return Devuelve un String listo para imprimir dado el formato
      */
 
-    public String formatArrayNumbers(final Integer[] array,
-                                     final String format) throws Exception {
+    public String formatearArrayNumeros(final Integer[] array,
+                                        final String formato) throws Exception {
 
-        String answer = "";
-        StringBuilder builder = new StringBuilder(answer);
+        String respuesta = "";
+        StringBuilder builder = new StringBuilder(respuesta);
 
-        String parsedFormat = this.parseFormat(format);
+        String formatoParseado = this.parseFormat(formato);
 
-        switch (parsedFormat) {
+        switch (formatoParseado) {
             case "pretty":
                 for (int i = 0; i < array.length; i++) {
                     builder.append(array[i] + " ");
                 }
                 break;
             case "quiet":
-                System.out.println();
                 for (int i = 0; i < array.length; i++) {
                     builder.append(System.lineSeparator() + array[i]);
                 }
@@ -40,22 +39,21 @@ public class Formatter {
         return builder.toString();
     }
 
-    public void writeToFile(final Integer[] array, final String format,
+    public void writeToFile(final Integer[] array, final String formato,
                             final String fileName, final int recieviedNumber) {
 
         String toWrite = "";
         StringBuilder builder = new StringBuilder(toWrite);
 
-        String parsedFormat = this.parseFormat(format);
+        String formatoParseado = this.parseFormat(formato);
 
-        switch (parsedFormat) {
+        switch (formatoParseado) {
             case "pretty":
                 for (int i = 0; i < array.length; i++) {
                     builder.append(array[i] + " ");
                 }
                 break;
             case "quiet":
-                System.out.println();
                 for (int i = 0; i < array.length; i++) {
                     builder.append(System.lineSeparator() + array[i]);
                 }
@@ -77,16 +75,16 @@ public class Formatter {
 
     }
 
-    private String parseFormat(final String format) {
+    private String parseFormat(final String formato) {
 
         //si el formato está vacio, devuelvo pretty
-        if (format.equals("--format=")) {
+        if (formato.equals("--format=")) {
             return "pretty";
         }
 
-        format.toLowerCase(); // lo transformo todoo a minuscula
+        formato.toLowerCase(); // lo transformo todoo a minuscula
 
-        return format.substring(9);
+        return formato.substring(9);
     }
 
 }

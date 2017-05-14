@@ -11,17 +11,17 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class FormatterTest {
+public class FormateadorTest {
 
     @Test
     public void prettyFormatTest() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "2 2 2 2 2 2 3 4 5 ";
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=pretty"));
+            Assert.assertEquals(expected, formateador.formatearArrayNumeros(numbers,"--Format=pretty"));
         } catch (Exception e) {
             
         }
@@ -31,12 +31,12 @@ public class FormatterTest {
     @Test
     public void prettyFormatTestUpperAndLowerCase() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "2 2 2 2 2 2 3 4 5 ";
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=pReTTy"));
+            Assert.assertEquals(expected, formateador.formatearArrayNumeros(numbers,"--Format=pReTTy"));
         } catch (Exception e) {
 
         }
@@ -46,12 +46,12 @@ public class FormatterTest {
     @Test
     public void nonFormatSpecifiedTest() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "2 2 2 2 2 2 3 4 5 ";
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,""));
+            Assert.assertEquals(expected, formateador.formatearArrayNumeros(numbers,""));
         } catch (Exception e) {
 
         }
@@ -61,12 +61,12 @@ public class FormatterTest {
     @Test
     public void quietFormatTest() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+3+System.lineSeparator()+4+System.lineSeparator()+5;
 
         try {
-            Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=quiet"));
+            Assert.assertEquals(expected, formateador.formatearArrayNumeros(numbers,"--Format=quiet"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,11 +77,11 @@ public class FormatterTest {
     @Test(expected=Exception.class)
     public void NotValidFormatTest() throws Exception {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "\n2\n2\n2\n2\n2\n2\n3\n4\n5";
 
-        Assert.assertEquals(expected,formatter.formatArrayNumbers(numbers,"--Format=yerba"));
+        Assert.assertEquals(expected, formateador.formatearArrayNumeros(numbers,"--Format=yerba"));
 
 
     }
@@ -89,11 +89,11 @@ public class FormatterTest {
     @Test
     public void fileCreatedTest() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
 
         try {
-            formatter.writeToFile(numbers,"--Format=quiet","testing.txt",360);
+            formateador.writeToFile(numbers,"--Format=quiet","testing.txt",360);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -106,12 +106,12 @@ public class FormatterTest {
     @Test
     public void fileCreatedCorrectlyFormatQuietNameTestingTxt() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "Factores primos 360: "+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+2+System.lineSeparator()+3+System.lineSeparator()+4+System.lineSeparator()+5;
         String fileContent= null;
         try {
-            formatter.writeToFile(numbers,"--Format=quiet","testing.txt",360);
+            formateador.writeToFile(numbers,"--Format=quiet","testing.txt",360);
             Path path = FileSystems.getDefault().getPath(".", "target/testing.txt");
             fileContent = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
         } catch (FileNotFoundException e) {
@@ -127,12 +127,12 @@ public class FormatterTest {
     @Test
     public void fileCreatedCorrectlyFormatPrettyNameTestingTxt() {
 
-        Formatter formatter = new Formatter();
+        Formateador formateador = new Formateador();
         Integer[] numbers = new Integer[]{2,2,2,2,2,2,3,4,5};
         String expected = "Factores primos 360: 2 2 2 2 2 2 3 4 5 ";
         String fileContent= null;
         try {
-            formatter.writeToFile(numbers,"--Format=pretty","testing.txt",360);
+            formateador.writeToFile(numbers,"--Format=pretty","testing.txt",360);
             Path path = FileSystems.getDefault().getPath(".", "target/testing.txt");
             fileContent = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
         } catch (FileNotFoundException e) {

@@ -4,12 +4,12 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ArraySorterTest {
+public class OrdenadorDeArrayTest {
 
     @Test
     public void sortAscTest(){
 
-        ArraySorter sorter = new ArraySorter();
+        OrdenadorDeArray sorter = new OrdenadorDeArray();
         Integer[] array = {5,4,3,2,7,8,10,11};
 
         Integer[] expected = {2,3,4,5,7,8,10,11};
@@ -21,7 +21,7 @@ public class ArraySorterTest {
     @Test
     public void sortDescTest(){
 
-        ArraySorter sorter = new ArraySorter();
+        OrdenadorDeArray sorter = new OrdenadorDeArray();
         Integer[] array = {5,4,3,2,7,8,10,11};
 
         Integer[] expected = {11,10,8,7,5,4,3,2};
