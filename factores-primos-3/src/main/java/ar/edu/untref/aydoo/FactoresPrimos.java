@@ -27,8 +27,11 @@ public class FactoresPrimos {
 
             crearFormatter(formato);
 
-            checkErroresFormato(formato);
-
+            try {
+                checkErroresFormato(formato);
+            }catch(Exception e){
+                throw e;
+            }
             procesarParametrosOpcionales(args);
 
             respuesta = calculador.calcularNumerosPrimos(numeroRecibido);

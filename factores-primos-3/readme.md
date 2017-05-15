@@ -23,4 +23,3 @@ Correcciones:
 
     -Se separo la interfaz grafica de ordenador de array, ahora solo se ocupa de recibir un array y darle un orden
 
-    
