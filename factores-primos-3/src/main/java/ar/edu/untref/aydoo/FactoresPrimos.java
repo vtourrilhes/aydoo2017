@@ -14,7 +14,6 @@ public class FactoresPrimos {
 
     public FactoresPrimos() {
         this.calculador = new Calculador();
-        this.formateador = new Formateador();
         this.ordenadorDeArray = new OrdenadorDeArray();
         this.orden = "--sort=asc";
     }
@@ -24,15 +23,21 @@ public class FactoresPrimos {
         try {
 
             int numeroRecibido = Integer.parseInt(args[0]);
-            formato = args[1];
+            formato = this.parsearFormato(args[1]);
+
+            crearFormatter(formato);
+
+            checkErroresFormato(formato);
 
             procesarParametrosOpcionales(args);
 
             respuesta = calculador.calcularNumerosPrimos(numeroRecibido);
 
-            respuestaOrdenada =  this.ordenadorDeArray.sortArray(orden, respuesta);
+            this.ordenarArray(respuesta);
 
-            String aMostrarEnConsola = formateador.formatearArrayNumeros(respuestaOrdenada,formato);
+            respuestaOrdenada =  this.ordenarArray(respuesta);
+
+            String aMostrarEnConsola = formateador.formatearArrayNumeros(respuestaOrdenada);
 
             if (this.escrituraArchivoRequerida) {
                 this.formateador.writeToFile(respuestaOrdenada, formato,nombreArchivo, numeroRecibido);
@@ -44,6 +49,38 @@ public class FactoresPrimos {
             throw e;
         }
 
+    }
+
+    private Integer[] ordenarArray(Integer[] respuesta) {
+
+        this.orden.toLowerCase();
+
+        if (orden.contains("asc")) {
+            respuesta = this.ordenadorDeArray.ordenarArray(respuesta);
+        } else if (orden.contains("des")) {
+            respuesta =  this.ordenadorDeArray.ordenarArrayDescendente(respuesta);
+
+        }
+
+        return respuesta;
+
+    }
+
+    private void crearFormatter(String formato) {
+
+        if(formato.equals("pretty")){
+            this.formateador = new FormateadorPretty();
+        }if(formato.equals("quiet")){
+            this.formateador = new FormateadorQuiet();
+        }
+
+    }
+
+    private void checkErroresFormato(String formato) throws Exception {
+        if(! formato.equals("pretty") && !formato.equals("quiet")){
+                throw new Exception("Formato no aceptado. "
+                        + "Las opciones posibles son: pretty o quiet.");
+        }
     }
 
     private void procesarParametrosOpcionales(String[] args) {
@@ -61,6 +98,18 @@ public class FactoresPrimos {
     private void imprimirEnConsola(int numeroRecibido, String aMostrarEnConsola) {
         System.out.print("Factores primos " + numeroRecibido + ": ");
         System.out.print(aMostrarEnConsola);
+    }
+
+    private String parsearFormato(final String formato) {
+
+        //si el formato está vacio, devuelvo pretty
+        if (formato.equals("--format=")) {
+            return "pretty";
+        }
+
+        formato.toLowerCase(); // lo transformo todoo a minuscula
+
+        return formato.substring(9);
     }
 
 }

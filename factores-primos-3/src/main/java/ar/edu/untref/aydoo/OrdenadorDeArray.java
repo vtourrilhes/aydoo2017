@@ -6,22 +6,22 @@ import java.util.List;
 
 public class OrdenadorDeArray {
 
-    public Integer[] sortArray(final String formato, final  Integer[] array) {
+    public Integer[] ordenarArray(final  Integer[] array) {
 
         Integer[] ordenado = array;
-
-        //paso a lowercase el formatoo y convierto
-        // el array a coleccion para ordenar
-        formato.toLowerCase();
         List<Integer> ordering = Arrays.asList(ordenado);
+        Collections.sort(ordering);
+        ordenado = (Integer[]) ordering.toArray();
 
-        if (formato.contains("asc")) {
-            Collections.sort(ordering);
-        } else if (formato.contains("des")) {
-            Collections.sort(ordering);
-            Collections.reverse(ordering);
-        }
+        return ordenado;
+    }
 
+    public Integer[] ordenarArrayDescendente(Integer[] array) {
+
+        Integer[] ordenado = array;
+        List<Integer> ordering = Arrays.asList(ordenado);
+        Collections.sort(ordering);
+        Collections.reverse(ordering);
         ordenado = (Integer[]) ordering.toArray();
 
         return ordenado;

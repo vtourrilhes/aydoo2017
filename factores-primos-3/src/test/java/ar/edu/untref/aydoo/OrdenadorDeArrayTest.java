@@ -13,7 +13,7 @@ public class OrdenadorDeArrayTest {
         Integer[] array = {5,4,3,2,7,8,10,11};
 
         Integer[] expected = {2,3,4,5,7,8,10,11};
-        Integer[] result = sorter.sortArray("--order:asc",array);
+        Integer[] result = sorter.ordenarArray(array);
 
         Assert.assertArrayEquals(expected,result);
     }
@@ -25,7 +25,7 @@ public class OrdenadorDeArrayTest {
         Integer[] array = {5,4,3,2,7,8,10,11};
 
         Integer[] expected = {11,10,8,7,5,4,3,2};
-        Integer[] result = sorter.sortArray("--order:desc",array);
+        Integer[] result = sorter.ordenarArrayDescendente(array);
 
         Assert.assertArrayEquals(expected,result);
     }
