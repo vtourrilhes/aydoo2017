@@ -1,13 +1,6 @@
 Factores primos 3
 =================
 
-Van algunos comentarios para la reentrega.
-
-
-
- - Falta prueba de integración del main Saludos, Diego
-
-
 Correcciones:
 
     - Se soluciono el problema del caso 1, ahora no muestra mas null y crea el archivo especificado
@@ -21,5 +14,7 @@ Correcciones:
     - Se crearon dos formatters diferentes, y el parseo del formato recibido por interfaz de usuario ya no se trata
       dentro de los formatter
 
-    -Se separo la interfaz grafica de ordenador de array, ahora solo se ocupa de recibir un array y darle un orden
+    - Se separo la interfaz grafica de ordenador de array, ahora solo se ocupa de recibir un array y darle un orden
+
+    - Se agrego el test de integracion de la clase main
 
